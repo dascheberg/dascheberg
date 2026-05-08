@@ -1,0 +1,50 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./src/**/*.{astro,html,js,jsx,ts,tsx,mdx}",
+  ],
+  theme: {
+    fontSize: {
+      kl:    "0.5rem",
+      sm:    "0.8rem",
+      base:  "1rem",
+      xl:    "1.25rem",
+      "1xl": "1.40rem",
+      "2xl": "1.563rem",
+      "3xl": "1.953rem",
+      "4xl": "2.441rem",
+      "5xl": "3.052rem",
+      "7xl": "10rem",
+      "9xl": "20rem",
+    },
+    extend: {
+      colors: {
+        "abg-b-100": "#adab76",
+        "abg-b-200": "#fafaf7",
+        "abg-b-300": "#efeee4",
+        "abg-b-400": "#deddc8",
+        "abg-b-500": "#cecdad",
+        "abg-b-600": "#bdbc91",
+        "abg-b-700": "#a2a064",
+        "abg-b-800": "#918f57",
+        "abg-b-900": "#7f7d4c",
+        "abg-b-910": "#6d6c41",
+        "abg-b-920": "#5b5a37",
+
+        "abg-g-base":  "#a6c9a6",
+        "abg-g-100":   "#fafcfa",
+        "abg-g-200":   "#edf4ed",
+        "abg-g-250":   "#dce9dc",
+        "abg-g-300":   "#cadeca",
+        "abg-g-350":   "#b8d4b8",
+        "abg-g-400":   "#a6c9a6",
+        "abg-g-500":   "#90bb90",
+        "abg-g-600":   "#79ad79",
+        "abg-g-700":   "#629f62",
+        "abg-g-800":   "#548954",
+        "abg-g-900":   "#467246",
+        "abg-g-910":   "#054f1a",
+      },
+    },
+  },
+};

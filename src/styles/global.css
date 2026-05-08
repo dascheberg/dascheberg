@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #bdbc91;
+}
+
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.main {
+  flex: 1;
+  background-color: #bdbc91;
+}
+
+.xnavbar {
+  overflow: hidden;
+  background-color: rgb(5, 79, 26);
+  font-family: Arial;
+  border-radius: 15px;
+}
+
+.xnavbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 6px 8px;
+  text-decoration: none;
+}
+
+.xnavbar a:hover {
+  background-color: rgb(8, 120, 40);
+}

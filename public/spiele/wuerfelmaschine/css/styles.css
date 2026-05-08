@@ -1,0 +1,255 @@
+body {
+	overflow: hidden;
+	background-color: rgb(255, 255, 255);
+}
+
+#div1 {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 14.48%;
+	left: 17.30%;
+	width: 65.39%;
+	height: 68.27%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(228, 228, 228);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 17px;
+	box-shadow: 14px 14px 14px rgba(0, 0, 0, 0.3);
+	font-family:  "Comic Sans MS", sans-serif;
+	font-size: 2.83vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+#start {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 1%;
+	left: 2%;
+	width: 30%;
+	height: 9.90%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(222, 240, 24);
+	border: solid rgb(0, 0, 0) 2px;
+	border-radius: 90px;
+	font-family:  "Comic Sans MS", sans-serif;
+	font-size: 1.98vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+
+#button {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 13.74%;
+	left: 38.86%;
+	width: 22.84%;
+	height: 9.90%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(173, 173, 173);
+	border: solid rgb(0, 0, 0) 2px;
+	border-radius: 90px;
+	font-family:  "Comic Sans MS", sans-serif;
+	font-size: 1.98vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+#wbtn {
+	display: none;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 78%;
+	left: 38.86%;
+	width: 22.84%;
+	height: 9.90%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(173, 173, 173);
+	border: solid rgb(0, 0, 0) 2px;
+	border-radius: 90px;
+	font-family:  "Comic Sans MS", sans-serif;
+	font-size: 1.98vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+#spieler1 {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 37.38%;
+	left: 3.86%;
+	width: 22.84%;
+	height: 5.90%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(204,204,0);
+	border: solid rgb(0, 0, 0) 2px;
+	border-radius: 90px;
+	font-family:  "Comic Sans MS", sans-serif;
+	font-size: 1.3vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+#sp1summe {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 47.37%;
+	left: 10%;
+	width: 10%;
+	height: 12.93%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 0);
+	border: solid rgb(0, 0, 0) 0px;
+	font-family:  "Comic Sans MS", sans-serif;
+	font-size: 2.83vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+#spieler2 {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 37.38%;
+	left: 73.86%;
+	width: 22.84%;
+	height: 5.90%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(130,236,165);
+	border: solid rgb(0, 0, 0) 2px;
+	border-radius: 90px;
+	font-family:  "Comic Sans MS", sans-serif;
+	font-size: 1.3vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+#sp2summe {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 47.37%;
+	left: 80%;
+	width: 10%;
+	height: 12.93%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 0);
+	border: solid rgb(0, 0, 0) 0px;
+	font-family:  "Comic Sans MS", sans-serif;
+	font-size: 2.83vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+#pfeil {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 22%;
+	left: 10%;
+	width: 10%;
+	height: 18%;
+	z-index: 9;
+	color:red;
+	overflow: hidden;
+	background-color: inherit;
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 90px;
+	font-family:  "Comic Sans MS", sans-serif;
+	font-size: 4vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+
+#wuerfelzahl {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 67.37%;
+	left: 41.14%;
+	width: 19.43%;
+	height: 12.93%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 0);
+	border: solid rgb(0, 0, 0) 0px;
+	font-family:  "Comic Sans MS", sans-serif;
+	font-size: 2.83vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+#wuerfelbild1 {
+	display: block;
+	position: absolute;
+	top: 37.38%;
+	left: 31.81%;
+	width: 15.00%;
+	height: 30.00%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0);
+	border: solid rgb(0, 0, 0) 0px;
+	margin: 0px;
+}
+
+
+#wuerfelbild2 {
+	display: block;
+	position: absolute;
+	top: 37.38%;
+	left: 55.81%;
+	width: 15.00%;
+	height: 30.00%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0);
+	border: solid rgb(0, 0, 0) 0px;
+	margin: 0px;
+}

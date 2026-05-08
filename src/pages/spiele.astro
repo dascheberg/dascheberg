@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const spiele = [
+  { href: "/spiele/bingojsnative/index.html",    name: "Bingo" },
+  { href: "/spiele/magischesQuadrat/index.html", name: "Magisches Quadrat" },
+  { href: "/spiele/taschenrechner/index.html",   name: "Taschenrechner" },
+  { href: "/spiele/wuerfelmaschine/index.html",  name: "Würfelmaschine" },
+  { href: "/spiele/ZahlenRaten/index.html",      name: "Zahl raten" },
+  { href: "/spiele/Rechentrainer_1/index.html",  name: "Rechen-Trainer" },
+];
+---
+<BaseLayout title="Spiele – daschebergs Seite">
+  <div class="text-3xl font-bold ml-16 mt-4">Spiele</div>
+  <section>
+    <article class="w-2/3 mx-auto mt-6">
+      <ul class="space-y-3">
+        {spiele.map(spiel => (
+          <li>
+            <a href={spiel.href} class="text-blue-900 font-bold text-xl hover:underline">
+              {spiel.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </article>
+  </section>
+</BaseLayout>

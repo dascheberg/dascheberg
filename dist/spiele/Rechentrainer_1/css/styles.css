@@ -1,0 +1,734 @@
+body {
+	overflow: hidden;
+	background-color: rgb(255, 255, 255);
+}
+
+.eZahlen {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 84%;
+	width: 4.72%;
+	height: 10.63%;
+	z-index: 9;
+	color: rgb(239, 237, 237);
+	overflow: hidden;
+	background-color: rgb(89, 94, 250);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 10px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 2.83vw;
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+.rechenart {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	width: 4.04%;
+	height: 71.40%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	border: solid rgb(0, 0, 0) 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 2.83vw;
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+.hilfe {
+		display: flex;
+		position: absolute;
+		box-sizing: border-box;
+		align-items: center;
+		justify-content: center;
+		width: 4.04%;
+		height: 71.40%;
+		z-index: 9;
+		color: rgb(0, 0, 0);
+		overflow: hidden;
+		border: solid rgb(0, 0, 0) 0px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 1vw;
+		padding: 0px;
+		margin: 0px;
+		user-select: none;
+	}
+
+.btnCon {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 20%;
+	left: 81%;
+	width: 18%;
+	height: 30%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(89, 94, 250);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 20px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 1.70vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+.btn {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	left: 10.60%;
+	width: 82.95%;
+	z-index: 9;
+	color: rgb(242, 247, 42);
+	overflow: hidden;
+	background-color: rgb(18, 15, 125);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 20px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 2.41vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+#grundgeruest {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 12.54%;
+	left: 3.54%;
+	width: 91.31%;
+	height: 80.53%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(18, 15, 125);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 1px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 2.83vw;
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+#kopfzeile {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 14%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(89, 94, 250);
+	border: solid rgb(0, 0, 0) 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 2.83vw;
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+#aufgabecontainer {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 20%;
+	left: 23.22%;
+	width: 57.03%;
+	height: 62.20%;
+	z-index: undefined;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(89, 94, 250);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 20px;
+	box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.3);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 2.83vw;
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+#titel {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 5.85%;
+	left: 0.24%;
+	width: 27.30%;
+	height: 85.95%;
+	z-index: 9;
+	color: rgb(242, 247, 42);
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 0);
+	border: solid rgb(0, 0, 0) 0px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 2.83vw;
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+#z0 {
+	left: 23.54%;
+}
+
+#z1 {
+	left: 29.27%;
+}
+
+#z2 {
+	left: 34.95%;
+}
+
+#z3 {
+	left: 40.63%;
+}
+
+#z4 {
+	left: 46.31%;
+}
+
+#z5 {
+	left: 52.00%;
+}
+
+#z6 {
+	left: 57.68%;
+}
+
+#z7 {
+	left: 63.29%;
+}
+
+#z8 {
+	left: 69.03%;
+}
+
+#z9 {
+	left: 74.71%;
+}
+
+#loesung {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 55.61%;
+	left: 37.08%;
+	width: 28.47%;
+	height: 26.94%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(114, 195, 248);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 14px;
+	box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 2.83vw;
+	font-weight: bold;
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+#fertig {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 57.27%;
+	left: 75.57%;
+	width: 12.03%;
+	height: 23.01%;
+	z-index: 9;
+	color: rgb(236, 232, 232);
+	overflow: hidden;
+	background-color: rgb(18, 15, 125);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 98px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 4.81vw;
+	font-weight: bold;
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+#aufgabe {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 0.00%;
+	left: -0.21%;
+	width: 100.21%;
+	height: 28.49%;
+	z-index: 9;
+	color: rgb(220, 220, 231);
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 0);
+	border: solid rgb(0, 0, 0) 0px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 5.66vw;
+	font-weight: bold;
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+#adition {
+	top: 9.24%;
+	left: 30.57%;
+	background-color: rgb(242, 247, 42);
+	border-radius: 8px;
+	font-weight: bold;
+}
+
+#subtraktion {
+	top: 9.18%;
+	left: 35.33%;
+	background-color: rgb(242, 247, 42);
+	border-radius: 8px;
+}
+
+#einmaleins {
+	top: 9.18%;
+	left: 40.09%;
+	background-color: rgb(242, 247, 42);
+	border-radius: 6px;
+}
+
+#divDurch {
+	top: 9.18%;
+	left: 49.41%;
+	background-color: rgb(242, 247, 42);
+	border-radius: 8px;
+}
+
+#zahlengroesse {
+	display: block;
+	position: absolute;
+	top: 13%;
+	left: 62%;
+	width: 8%;
+	height: 60%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(242, 247, 42);
+	border: solid rgb(0, 0, 0) 1px;
+	border-radius: 11px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 2vw;
+	font-weight: bold;
+	padding: 0.5%;
+	padding-left: 1%;
+	text-align: center;
+	margin: 0px;
+}
+
+#zahlengroesseBis {
+	display: none;
+	position: absolute;
+	top: 13%;
+	left: 70%;
+	width: 7%;
+	height: 60%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(242, 247, 42);
+	border: solid rgb(0, 0, 0) 1px;
+	border-radius: 11px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 2vw;
+	font-weight: bold;
+	padding: 0.5%;
+	padding-left: 1%;
+	text-align: center;
+	margin: 0px;
+}
+
+#anzAufgaben {
+	display: block;
+	position: absolute;
+	top: 13%;
+	left: 72%;
+	width: 8%;
+	height: 60%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(242, 247, 42);
+	border: solid rgb(0, 0, 0) 1px;
+	border-radius: 11px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 2vw;
+	font-weight: bold;
+	padding: 0.5%;
+	padding-left: 1%;
+	text-align: center;
+	margin: 0px;
+}
+
+
+#lbgr {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 80.10%;
+	left: 34.61%;
+	width: 20.00%;
+	height: 19.88%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 0);
+	border: solid rgb(0, 0, 0) 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.13vw;
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+#hilfeendebtn {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	left: 10%;
+	width: 82%;
+	z-index: 9;
+	color: rgb(242, 247, 42);
+	overflow: hidden;
+	background-color: rgb(18, 15, 125);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 20px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 1.2vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+#lbzr {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 38%;
+	left: 61%;
+	width: 30%;
+	height: 99.77%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 0);
+	border: solid rgb(0, 0, 0) 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1vw;
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+#btncontainer {
+}
+
+#startbtn {
+	top: 11.09%;
+	height: 22.86%;
+}
+
+#aendernbtn {
+	top: 42.87%;
+	height: 22.76%;
+}
+
+#endebtn {
+	top: 71.74%;
+	height: 22.76%;
+}
+
+#info {
+	display: block;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 20%;
+	left: 1%;
+	width: 21%;
+	height: 62%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(89, 94, 250);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 22px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 0.9vw;
+	padding: 10px;
+	margin: 0px;
+	user-select: none;
+}
+
+#hilfetext {
+	display: block;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: top;
+	justify-content: center;
+	top: 2%;
+	left: 1%;
+	width: 98%;
+	height: 80%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(89, 94, 250);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 22px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 1vw;
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+#auswertungsergebnis {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: top;
+	justify-content: center;
+	top: 52%;
+	left: 81%;
+	width: 18%;
+	height: 30%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(89, 94, 250);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 20px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 1.13vw;
+	padding: 0px;
+	margin: 0px;
+	user-select: none;
+}
+
+#multiplikation {
+	top: 9.76%;
+	left: 44.69%;
+	background-color: rgb(242, 247, 42);
+	border-radius: 6px;
+}
+
+#division {
+	top: 9.18%;
+	left: 53.97%;
+	background-color: rgb(242, 247, 42);
+	border-radius: 8px;
+}
+
+#hilfe {
+	top: 13.76%;
+	left: 90%;
+	background-color:rgb(18, 15, 125);
+	color: yellow;
+	border-radius: 8px;
+}
+
+#langehilfe {
+	top: 13.76%;
+	left: 94.98%;
+	background-color: rgb(18, 15, 125);
+	color: yellow;
+	border-radius: 8px;
+}
+
+#auswertTable {
+	width: 90%;
+	height:80%;
+	border:0;
+	background-color: rgb(89, 94, 250);
+	text-align: center;
+}
+
+table th {
+	font-weight: bold;
+	color:yellow;
+	font-size: 2vw;
+	text-decoration: underline;
+}
+
+table td {
+	font-size: 1.5vw;
+}
+
+#endeinfo {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: top;
+	justify-content: center;
+	text-align:center;
+	top: 6.98%;
+	left: 30.80%;
+	width: 44.22%;
+	height: 61.56%;
+	z-index: 9;
+	color: rgb(0, 0, 0);
+	overflow: hidden;
+	background-color: rgb(0, 128, 0);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 22px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 1.8vw;
+	padding: 20px;
+	margin: 0px;
+	user-select: none;
+}
+
+#endeinfobtn {
+	top: 80%;
+	left: 39.55%;
+	width: 19.06%;
+	height: 12.81%;
+	color: rgb(255, 255, 0);
+	font-weight: bold;
+}
+
+img {
+	width: 100%;
+	height: 10%;
+}
+
+#hilfelang {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: top;
+	justify-content: left;
+	text-align: left;
+	top: 6%;
+	left: 8%;
+	width: 90%;
+	height: 80%;
+	z-index: 9;
+	color: rgb(18,15,125);
+	overflow: hidden;
+	background-color: rgb(104, 229, 123);
+	border-radius: 22px;
+	border: solid rgb(0, 0, 0) 0px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 1vw;
+	padding: 10px;
+	margin: 5px;
+	user-select: none;
+}
+
+.erllang {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: top;
+	justify-content: center;
+	top: 2%;
+	left: 2%;
+	width: 80%;
+	height: 90%;
+	z-index: 9;
+	color: rgb(18,15,125);
+	overflow: hidden;
+	background-color: rgb(104, 229, 123);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 22px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 1vw;
+	padding: 20px;
+	margin: 5px;
+	user-select: none;
+}
+
+#erllangContainer {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: top;
+	justify-content: center;
+	top: 2%;
+	left: 2%;
+	width: 70%;
+	height: 90%;
+	z-index: 9;
+	color: rgb(18,15,125);
+	overflow: hidden;
+	background-color: rgb(104, 229, 123);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 22px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 1vw;
+	padding: 20px;
+	margin: 10px;
+	user-select: none;
+}
+
+#erllangendebtn {
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
+	top: 90%;
+	left: 30%;
+	width: 40%;
+	z-index: 9;
+	color: rgb(242, 247, 42);
+	overflow: hidden;
+	background-color: rgb(18, 15, 125);
+	border: solid rgb(0, 0, 0) 0px;
+	border-radius: 20px;
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 1.2vw;
+	padding: 0px;
+	margin: 0px;
+}
