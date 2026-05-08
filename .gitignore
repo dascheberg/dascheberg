@@ -33,3 +33,13 @@ npm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# astro build artifacts
+/.astro
+/dist
+
+# local recovery artifacts
+/.git_corrupt_backup_*
+
+# windows stream metadata
+*:Zone.Identifier
