@@ -73,6 +73,10 @@ body {
 }
 
 @media (max-width: 720px) {
+  .navbar-inner {
+    flex-wrap: wrap;
+  }
+
   .nav-toggle {
     display: flex;
   }
