@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
   title?: string;
@@ -7,26 +7,54 @@ interface Props {
 
 const { title = "daschebergs Seite" } = Astro.props;
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="daschebergs Seite" />
-  <link rel="icon" href="/favicon.ico" />
-  <title>{title}</title>
-</head>
-<body>
-  <div class="page-wrap">
-    <nav class="xnavbar mx-4 mt-2">
-      <a href="/">Home</a>
-      <a href="/spiele">Spiele</a>
-    </nav>
-    <main>
-      <div class="main">
-        <slot />
-      </div>
-    </main>
-  </div>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="daschebergs Seite" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="page-wrap">
+      <nav class="xnavbar mx-4 mt-2">
+        <div class="navbar-inner">
+          <button
+            id="nav-toggle"
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="nav-links"
+            aria-label="Menü öffnen"
+          >
+            <span></span><span></span><span></span>
+          </button>
+          <div id="nav-links" class="nav-links">
+            <a href="/">Home</a>
+            <a href="/spiele">Spiele</a>
+            <a href="https://medi.dascheberg.de">Medi-Verwaltung</a>
+            <a href="https://www.ssvskat.de">Skat-Verwaltung</a>
+            <a href="https://www.wss-sh.de">WSS-SH</a>
+            <a href="https://www.gemeinde24640.de">Termine 24640</a>
+            <a href="https://www.vkeinfach.de">Vk-einfach</a>
+          </div>
+        </div>
+      </nav>
+      <main>
+        <div class="main">
+          <slot />
+        </div>
+      </main>
+    </div>
+    <script>
+      const toggle = document.getElementById("nav-toggle");
+      const links = document.getElementById("nav-links");
+
+      toggle?.addEventListener("click", () => {
+        const isOpen = links?.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(!!isOpen));
+      });
+    </script>
+  </body>
 </html>

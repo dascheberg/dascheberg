@@ -22,21 +22,73 @@ body {
 }
 
 .xnavbar {
-  overflow: hidden;
   background-color: rgb(5, 79, 26);
   font-family: Arial;
   border-radius: 15px;
+  padding: 4px 8px;
 }
 
-.xnavbar a {
-  float: left;
+.navbar-inner {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
   font-size: 16px;
   color: white;
   text-align: center;
   padding: 6px 8px;
   text-decoration: none;
+  border-radius: 8px;
 }
 
-.xnavbar a:hover {
+.nav-links a:hover {
   background-color: rgb(8, 120, 40);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  margin-right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  border-radius: 1px;
+}
+
+@media (max-width: 720px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    text-align: left;
+    padding: 10px 8px;
+  }
 }
