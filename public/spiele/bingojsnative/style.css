@@ -1,0 +1,203 @@
+:root {
+  --bg: #0b1220;
+  --panel: #121b2e;
+  --panel-border: #23324d;
+  --text: #f5f7fa;
+  --muted: #93a2bd;
+  --gold: #ffd54a;
+  --green-ok: #3ecf6f;
+  --red-off: #4a2530;
+
+  --color-B: #ff6b6b;
+  --color-I: #ffd54a;
+  --color-N: #4dd0e1;
+  --color-G: #81c784;
+  --color-O: #ba68c8;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Steuerung ---------- */
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 16px;
+  background: var(--panel);
+  border-bottom: 2px solid var(--panel-border);
+  flex: 0 0 auto;
+}
+
+.btn {
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding: 16px 40px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  color: #0b1220;
+  transition: transform 0.08s ease, opacity 0.15s ease;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+  background: #55617a !important;
+  color: #c3cbdb !important;
+}
+
+.btn-neu     { background: var(--green-ok); }
+.btn-ziehen  { background: var(--gold); }
+.btn-abbruch { background: #ff5c5c; }
+
+/* ---------- Hauptbereich ---------- */
+
+.content {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+}
+
+/* ---------- Links: große Anzeige ---------- */
+
+.draw-display {
+  flex: 1.4 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #182338 0%, var(--bg) 75%);
+  border-right: 3px solid var(--panel-border);
+}
+
+.draw-display .letter {
+  font-size: 14vw;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(255, 213, 74, 0.4);
+}
+
+.draw-display .number {
+  font-size: 26vw;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--text);
+  text-shadow: 0 0 60px rgba(255, 255, 255, 0.15);
+}
+
+.draw-display.flash {
+  animation: flash 0.4s ease;
+}
+
+@keyframes flash {
+  0%   { background: rgba(255, 213, 74, 0.25); }
+  100% { background: transparent; }
+}
+
+/* ---------- Rechts: Tafel ---------- */
+
+.board {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.board-row {
+  display: flex;
+  align-items: center;
+  background: var(--panel);
+  border: 2px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  gap: 14px;
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+.board-letter {
+  font-size: 2.4rem;
+  font-weight: 900;
+  width: 1.1em;
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.letter-B { color: var(--color-B); }
+.letter-I { color: var(--color-I); }
+.letter-N { color: var(--color-N); }
+.letter-G { color: var(--color-G); }
+.letter-O { color: var(--color-O); }
+
+.board-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-content: center;
+}
+
+.num-chip {
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: #1c2740;
+  color: var(--muted);
+}
+
+.num-chip.drawn {
+  background: var(--gold);
+  color: #0b1220;
+}
+
+.num-chip.latest {
+  outline: 3px solid #fff;
+}
+
+.board-info {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 2px solid var(--panel-border);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.board-info span {
+  color: var(--gold);
+  font-weight: 900;
+}
+
+/* ---------- kleinere Bildschirme ---------- */
+
+@media (max-width: 900px) {
+  .content { flex-direction: column; }
+  .draw-display { border-right: none; border-bottom: 3px solid var(--panel-border); padding: 20px 0; }
+  .draw-display .letter { font-size: 20vw; }
+  .draw-display .number { font-size: 34vw; }
+  .btn { font-size: 1.1rem; padding: 12px 20px; }
+}

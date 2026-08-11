@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="text/html" http-equiv="content-type">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="shortcut icon" href="#" type="image/x-icon" />
+  <title>Bingo ABG</title>
+</head>
+
+<body>
+  <a href="/spiele" style="position:fixed;top:8px;left:8px;background:rgb(5,79,26);color:white;padding:4px 12px;border-radius:8px;text-decoration:none;font-family:Arial,sans-serif;font-size:14px;z-index:9999;">&#8592; Spiele</a>
+  <div id="titel" class="titel">Bingo
+    <!-- <span id="untertitel">by &#169;Dieter Ascheberg</span> -->
+  </div>
+  <div id="container" class="container">
+    <div id="zahlenContainer" class="zahlenContainer">
+      <div id="gezogeneZahl" class="gezogeneZahl gezZahl ende zahlen">??</div>
+      <div id="bereitsGezogen">
+        <div class="bereitsgezZahl zahlen">gezogene Zahlen:</div>
+
+        <div class="bingoZahl">B</div>
+        <div id="bZahlen" class="bZahlen"></div>
+
+        <div class="bingoZahl">I</div>
+        <div id="iZahlen" class="bZahlen"></div>
+
+        <div class="bingoZahl">N</div>
+        <div id="nZahlen" class="bZahlen"></div>
+
+        <div class="bingoZahl">G</div>
+        <div id="gZahlen" class="bZahlen"></div>
+
+        <div class="bingoZahl">O</div>
+        <div id="oZahlen" class="bZahlen"></div>
+        <hr />
+        <div class="letzteZahl">letzte Zahl:
+          <span id="letzteZahl"></span>
+          <div>Anzahl gezogener Zahlen: <span id="laengeGezZahlen"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div id="actionButtons" class="actionBtn">
+    <button id="neuesSpiel" class="button neuesSpiel">neues Spiel</button>
+    <button id="zahlZiehen" class="button zahlZiehen" disabled>Zahl ziehen</button>
+    <button id="abbrechen" class="abbrechen button">Abbrechen</button>
+  </div>
+
+
+</body>
+<script src="index.js"></script>
+
+</html>

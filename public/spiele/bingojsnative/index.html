@@ -1,57 +1,56 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="text/html" http-equiv="content-type">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rel="shortcut icon" href="#" type="image/x-icon" />
-  <title>Bingo ABG</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bingo</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <a href="/spiele" style="position:fixed;top:8px;left:8px;background:rgb(5,79,26);color:white;padding:4px 12px;border-radius:8px;text-decoration:none;font-family:Arial,sans-serif;font-size:14px;z-index:9999;">&#8592; Spiele</a>
-  <div id="titel" class="titel">Bingo
-    <!-- <span id="untertitel">by &#169;Dieter Ascheberg</span> -->
-  </div>
-  <div id="container" class="container">
-    <div id="zahlenContainer" class="zahlenContainer">
-      <div id="gezogeneZahl" class="gezogeneZahl gezZahl ende zahlen">??</div>
-      <div id="bereitsGezogen">
-        <div class="bereitsgezZahl zahlen">gezogene Zahlen:</div>
 
-        <div class="bingoZahl">B</div>
-        <div id="bZahlen" class="bZahlen"></div>
+<header class="controls">
+  <button id="btnNeu" class="btn btn-neu">Neu</button>
+  <button id="btnZiehen" class="btn btn-ziehen">Zahl ziehen</button>
+  <button id="btnAbbruch" class="btn btn-abbruch">Abbruch</button>
+</header>
 
-        <div class="bingoZahl">I</div>
-        <div id="iZahlen" class="bZahlen"></div>
+<main class="content">
 
-        <div class="bingoZahl">N</div>
-        <div id="nZahlen" class="bZahlen"></div>
+  <section class="draw-display" id="drawDisplay">
+    <div class="letter" id="currentLetter">&nbsp;</div>
+    <div class="number" id="currentNumber">–</div>
+  </section>
 
-        <div class="bingoZahl">G</div>
-        <div id="gZahlen" class="bZahlen"></div>
-
-        <div class="bingoZahl">O</div>
-        <div id="oZahlen" class="bZahlen"></div>
-        <hr />
-        <div class="letzteZahl">letzte Zahl:
-          <span id="letzteZahl"></span>
-          <div>Anzahl gezogener Zahlen: <span id="laengeGezZahlen"></span></div>
-        </div>
-      </div>
+  <aside class="board">
+    <div class="board-row" data-letter="B">
+      <span class="board-letter letter-B">B</span>
+      <div class="board-numbers" id="row-B"></div>
     </div>
-  </div>
-  </div>
-  <div id="actionButtons" class="actionBtn">
-    <button id="neuesSpiel" class="button neuesSpiel">neues Spiel</button>
-    <button id="zahlZiehen" class="button zahlZiehen" disabled>Zahl ziehen</button>
-    <button id="abbrechen" class="abbrechen button">Abbrechen</button>
-  </div>
+    <div class="board-row" data-letter="I">
+      <span class="board-letter letter-I">I</span>
+      <div class="board-numbers" id="row-I"></div>
+    </div>
+    <div class="board-row" data-letter="N">
+      <span class="board-letter letter-N">N</span>
+      <div class="board-numbers" id="row-N"></div>
+    </div>
+    <div class="board-row" data-letter="G">
+      <span class="board-letter letter-G">G</span>
+      <div class="board-numbers" id="row-G"></div>
+    </div>
+    <div class="board-row" data-letter="O">
+      <span class="board-letter letter-O">O</span>
+      <div class="board-numbers" id="row-O"></div>
+    </div>
 
+    <div class="board-info">
+      <div class="info-line">Zuletzt gezogen: <span id="lastDrawn">–</span></div>
+      <div class="info-line">Gezogene Zahlen: <span id="drawnCount">0</span> / 75</div>
+    </div>
+  </aside>
 
+</main>
+
+<script src="script.js"></script>
 </body>
-<script src="index.js"></script>
-
 </html>
