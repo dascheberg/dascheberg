@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bingo – Hilfe</title>
+<style>
+  :root {
+    --bg: #fdf6e3;
+    --panel: #ffffff;
+    --border: #e2cfa0;
+    --text: #1a1a2e;
+    --muted: #6b6b8a;
+    --gold: #c67c00;
+    --blue: #0060a8;
+    --color-B: #c0392b;
+    --color-I: #c67c00;
+    --color-N: #0060a8;
+    --color-G: #1a7a3e;
+    --color-O: #7b1fa2;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    padding: 40px 24px 60px;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--border);
+  }
+
+  header img {
+    height: 80px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin: 0;
+    color: var(--gold);
+  }
+
+  h2 {
+    font-size: 1.7rem;
+    font-weight: 800;
+    margin-top: 36px;
+    margin-bottom: 12px;
+    color: var(--text);
+    border-left: 6px solid var(--gold);
+    padding-left: 14px;
+  }
+
+  p { margin: 0 0 16px; }
+
+  .screenshot {
+    display: block;
+    max-width: 100%;
+    border-radius: 14px;
+    border: 2px solid var(--border);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    margin: 24px auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 28px;
+    background: var(--panel);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+
+  th, td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  th {
+    background: var(--gold);
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  .badge {
+    display: inline-block;
+    font-weight: 800;
+    font-size: 1.1rem;
+    padding: 2px 12px;
+    border-radius: 6px;
+    color: #ffffff;
+    margin-right: 6px;
+  }
+
+  .B { background: var(--color-B); }
+  .I { background: var(--color-I); }
+  .N { background: var(--color-N); }
+  .G { background: var(--color-G); }
+  .O { background: var(--color-O); }
+
+  .btn-back {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 16px 40px;
+    background: var(--blue);
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-radius: 14px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .btn-back:hover { opacity: 0.9; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <img src="bingo.png" alt="Bingo Logo">
+    <h1>Bingo – Spielanleitung</h1>
+  </header>
+
+  <h2>Was ist dieses Programm?</h2>
+  <p>
+    Dieses Programm ist ein digitaler Bingo-Zieher für den Beamer.
+    Es zieht zufällig Zahlen von 1 bis 75 und zeigt sie groß auf dem Bildschirm an.
+    Die Spieler*innen vergleichen die gezogene Zahl mit ihrem Bingo-Zettel.
+  </p>
+
+  <img src="bingo.png" alt="Screenshot der Bingo-Anwendung" class="screenshot">
+
+  <h2>Die drei Schaltflächen</h2>
+  <table>
+    <tr><th>Schaltfläche</th><th>Funktion</th></tr>
+    <tr><td><strong>Neu</strong></td><td>Startet ein neues Spiel. Alle gezogenen Zahlen werden zurückgesetzt.</td></tr>
+    <tr><td><strong>Zahl ziehen</strong></td><td>Zieht die nächste Zahl. Alternativ kann die <strong>Leertaste</strong> gedrückt werden.</td></tr>
+    <tr><td><strong>Abbruch</strong></td><td>Bricht das laufende Spiel ab, ohne ein neues zu starten.</td></tr>
+  </table>
+
+  <h2>Die Buchstaben B – I – N – G – O</h2>
+  <p>Jede Zahl gehört zu einem Buchstaben:</p>
+  <table>
+    <tr><th>Buchstabe</th><th>Zahlenbereich</th></tr>
+    <tr><td><span class="badge B">B</span></td><td>1 – 15</td></tr>
+    <tr><td><span class="badge I">I</span></td><td>16 – 30</td></tr>
+    <tr><td><span class="badge N">N</span></td><td>31 – 45</td></tr>
+    <tr><td><span class="badge G">G</span></td><td>46 – 60</td></tr>
+    <tr><td><span class="badge O">O</span></td><td>61 – 75</td></tr>
+  </table>
+
+  <h2>Die Anzeigetafel</h2>
+  <p>
+    Auf der rechten Seite sind alle 75 Zahlen sichtbar.
+    Bereits gezogene Zahlen werden farbig hervorgehoben.
+    Die zuletzt gezogene Zahl ist zusätzlich mit einem dunklen Rahmen markiert.
+  </p>
+
+  <h2>Tipp für den Beamerbetrieb</h2>
+  <p>
+    Mit der <strong>Leertaste</strong> lässt sich bequem die nächste Zahl ziehen,
+    ohne zur Maus greifen zu müssen.
+  </p>
+
+  <a href="index.html" class="btn-back">← Zurück zum Spiel</a>
+
+</div>
+</body>
+</html>

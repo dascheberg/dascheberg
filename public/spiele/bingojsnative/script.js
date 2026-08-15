@@ -22,6 +22,7 @@ let gameRunning = false;
 const btnNeu = document.getElementById("btnNeu");
 const btnZiehen = document.getElementById("btnZiehen");
 const btnAbbruch = document.getElementById("btnAbbruch");
+const btnDoc = document.getElementById("btnDoc");
 
 const drawDisplay = document.getElementById("drawDisplay");
 const currentLetterEl = document.getElementById("currentLetter");
@@ -72,8 +73,8 @@ function updateButtons() {
 }
 
 function resetDisplay() {
-  currentLetterEl.textContent = " ";
-  currentNumberEl.textContent = "–";
+  currentLetterEl.textContent = "";
+  currentNumberEl.textContent = "";
   lastDrawnEl.textContent = "–";
   drawnCountEl.textContent = "0";
 }
@@ -144,6 +145,7 @@ function abbruch() {
 btnNeu.addEventListener("click", neuesSpiel);
 btnZiehen.addEventListener("click", zahlZiehen);
 btnAbbruch.addEventListener("click", abbruch);
+document.getElementById("btnDoc").addEventListener("click", () => window.open("hilfe.html", "_blank"));
 
 // Leertaste zieht eine Zahl, wenn ein Spiel läuft (bequem für den Beamer-Betrieb)
 document.addEventListener("keydown", (e) => {

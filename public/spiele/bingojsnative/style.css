@@ -1,18 +1,17 @@
 :root {
-  --bg: #0b1220;
-  --panel: #121b2e;
-  --panel-border: #23324d;
-  --text: #f5f7fa;
-  --muted: #93a2bd;
-  --gold: #ffd54a;
-  --green-ok: #3ecf6f;
-  --red-off: #4a2530;
+  --bg: #fdf6e3;
+  --panel: #ffffff;
+  --panel-border: #e2cfa0;
+  --text: #1a1a2e;
+  --muted: #6b6b8a;
+  --gold: #c67c00;
+  --green-ok: #1a7a3e;
 
-  --color-B: #ff6b6b;
-  --color-I: #ffd54a;
-  --color-N: #4dd0e1;
-  --color-G: #81c784;
-  --color-O: #ba68c8;
+  --color-B: #c0392b;
+  --color-I: #c67c00;
+  --color-N: #0060a8;
+  --color-G: #1a7a3e;
+  --color-O: #7b1fa2;
 }
 
 * { box-sizing: border-box; }
@@ -39,35 +38,41 @@ body {
   gap: 24px;
   padding: 16px;
   background: var(--panel);
-  border-bottom: 2px solid var(--panel-border);
+  border-bottom: 3px solid var(--panel-border);
   flex: 0 0 auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .btn {
   font-size: 1.6rem;
   font-weight: 700;
   padding: 16px 40px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: none;
   cursor: pointer;
-  color: #0b1220;
-  transition: transform 0.08s ease, opacity 0.15s ease;
+  color: #ffffff;
+  transition: transform 0.08s ease, opacity 0.15s ease, box-shadow 0.1s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .btn:active:not(:disabled) {
   transform: scale(0.96);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 .btn:disabled {
   cursor: not-allowed;
   opacity: 0.35;
-  background: #55617a !important;
-  color: #c3cbdb !important;
+  background: #b0b8c8 !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
 }
 
 .btn-neu     { background: var(--green-ok); }
-.btn-ziehen  { background: var(--gold); }
-.btn-abbruch { background: #ff5c5c; }
+.btn-ziehen  { background: #e08000; }
+.btn-abbruch { background: #c0392b; }
+.btn-doc     { background: var(--color-N); }
+.btn-doc    { background: #7b1fa2; }
 
 /* ---------- Hauptbereich ---------- */
 
@@ -85,7 +90,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, #182338 0%, var(--bg) 75%);
+  background: radial-gradient(circle at center, #fffde7 0%, #fdf0c0 60%, #fce8a0 100%);
   border-right: 3px solid var(--panel-border);
 }
 
@@ -94,7 +99,7 @@ body {
   font-weight: 900;
   line-height: 1;
   color: var(--gold);
-  text-shadow: 0 0 40px rgba(255, 213, 74, 0.4);
+  text-shadow: 0 3px 12px rgba(198, 124, 0, 0.3);
 }
 
 .draw-display .number {
@@ -102,7 +107,15 @@ body {
   font-weight: 900;
   line-height: 1;
   color: var(--text);
-  text-shadow: 0 0 60px rgba(255, 255, 255, 0.15);
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+}
+
+.draw-display .number:empty::before {
+  content: "Bereit";
+  font-size: 5vw;
+  font-weight: 700;
+  color: var(--muted);
+  text-shadow: none;
 }
 
 .draw-display.flash {
@@ -110,7 +123,7 @@ body {
 }
 
 @keyframes flash {
-  0%   { background: rgba(255, 213, 74, 0.25); }
+  0%   { background: rgba(255, 213, 74, 0.65); }
   100% { background: transparent; }
 }
 
@@ -123,6 +136,7 @@ body {
   padding: 20px 24px;
   gap: 12px;
   overflow-y: auto;
+  background: var(--bg);
 }
 
 .board-row {
@@ -130,11 +144,12 @@ body {
   align-items: center;
   background: var(--panel);
   border: 2px solid var(--panel-border);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 10px 14px;
   gap: 14px;
   flex: 1 1 0;
   min-height: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
 }
 
 .board-letter {
@@ -163,17 +178,24 @@ body {
   font-weight: 700;
   padding: 4px 9px;
   border-radius: 6px;
-  background: #1c2740;
+  background: #ede8da;
   color: var(--muted);
 }
 
 .num-chip.drawn {
-  background: var(--gold);
-  color: #0b1220;
+  color: #ffffff;
 }
 
+/* Gezogene Chips erhalten die Farbe ihrer Spalte */
+#row-B .num-chip.drawn { background: var(--color-B); }
+#row-I .num-chip.drawn { background: var(--color-I); }
+#row-N .num-chip.drawn { background: var(--color-N); }
+#row-G .num-chip.drawn { background: var(--color-G); }
+#row-O .num-chip.drawn { background: var(--color-O); }
+
 .num-chip.latest {
-  outline: 3px solid #fff;
+  outline: 3px solid var(--text);
+  outline-offset: 1px;
 }
 
 .board-info {
@@ -185,6 +207,7 @@ body {
   border-top: 2px solid var(--panel-border);
   font-size: 1.3rem;
   font-weight: 600;
+  color: var(--text);
 }
 
 .board-info span {
