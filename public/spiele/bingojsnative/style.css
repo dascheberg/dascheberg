@@ -70,6 +70,8 @@ body {
 
 .btn-neu     { background: var(--green-ok); }
 .btn-ziehen  { background: #e08000; }
+.btn-manuell { background: #8a8a9a; }
+.btn-manuell.active { background: var(--color-N); box-shadow: 0 0 0 3px rgba(0, 96, 168, 0.35), 0 4px 10px rgba(0, 0, 0, 0.2); }
 .btn-abbruch { background: #c0392b; }
 .btn-doc     { background: var(--color-N); }
 .btn-doc    { background: #7b1fa2; }
@@ -125,6 +127,24 @@ body {
 @keyframes flash {
   0%   { background: rgba(255, 213, 74, 0.65); }
   100% { background: transparent; }
+}
+
+.draw-display.error-flash {
+  animation: errorFlash 0.4s ease;
+}
+
+@keyframes errorFlash {
+  0%   { background: rgba(220, 50, 50, 0.55); }
+  100% { background: transparent; }
+}
+
+.mode-hint {
+  min-height: 1.4em;
+  margin-top: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-N);
+  text-align: center;
 }
 
 /* ---------- Rechts: Tafel ---------- */
