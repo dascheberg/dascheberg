@@ -15,8 +15,8 @@
 
   --linie-waagerecht: #c0392b;
   --linie-senkrecht: #0060a8;
-  --linie-diagonal1: #1a7a3e;
-  --linie-diagonal2: #7b1fa2;
+  --linie-diagonal: #1a7a3e;
+  --linie-diagonal-hell: #3f9e63;
 }
 
 * { box-sizing: border-box; }
@@ -371,8 +371,14 @@ body {
 .zettel-zelle.markiert { color: #ffffff; }
 .zettel-zelle.markiert.farbe-waagerecht { background: var(--linie-waagerecht); }
 .zettel-zelle.markiert.farbe-senkrecht  { background: var(--linie-senkrecht); }
-.zettel-zelle.markiert.farbe-diagonal1  { background: var(--linie-diagonal1); }
-.zettel-zelle.markiert.farbe-diagonal2  { background: var(--linie-diagonal2); }
+.zettel-zelle.markiert.farbe-diagonal   { background: var(--linie-diagonal); }
+.zettel-zelle.markiert.farbe-diagonal-hell { background: var(--linie-diagonal-hell); }
+
+/* Die Zahl in der Mitte liegt auf beiden Diagonalen und bekommt deshalb
+   beide Farben - diagonal geteilt, passend zu den beiden Linien. */
+.zettel-zelle.markiert.farbe-diagonal.farbe-diagonal-hell {
+  background: linear-gradient(135deg, var(--linie-diagonal) 0 50%, var(--linie-diagonal-hell) 50% 100%);
+}
 
 .zettel-nummer {
   padding-top: 4px;
@@ -395,6 +401,7 @@ body {
   position: absolute;
   border: 6px solid;
   border-radius: 999px;
+  transition: top 0.35s ease, left 0.35s ease;
 }
 
 .linie-waagerecht {
@@ -424,15 +431,13 @@ body {
   height: 18%;
 }
 
-.linie-diagonal1 {
-  border-color: var(--linie-diagonal1);
-  transform: translate(-50%, -50%) rotate(45deg);
+.linie-diagonal1,
+.linie-diagonal2 {
+  border-color: var(--linie-diagonal);
 }
 
-.linie-diagonal2 {
-  border-color: var(--linie-diagonal2);
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
+.linie-diagonal1 { transform: translate(-50%, -50%) rotate(45deg); }
+.linie-diagonal2 { transform: translate(-50%, -50%) rotate(-45deg); }
 
 /* ---------- Legende ---------- */
 
@@ -463,8 +468,7 @@ body {
 
 .legende-punkt.farbe-waagerecht { background: var(--linie-waagerecht); }
 .legende-punkt.farbe-senkrecht  { background: var(--linie-senkrecht); }
-.legende-punkt.farbe-diagonal1  { background: var(--linie-diagonal1); }
-.legende-punkt.farbe-diagonal2  { background: var(--linie-diagonal2); }
+.legende-punkt.farbe-diagonal   { background: var(--linie-diagonal); }
 
 @media (max-width: 900px) {
   .btn-erklaerung { font-size: 0.95rem; padding: 10px 14px; }

@@ -328,6 +328,13 @@ const ZETTEL = [
 const LINIE_WAAGERECHT = [[2, 0], [2, 1], [2, 2], [2, 3], [2, 4]];
 const LINIE_SENKRECHT = [[0, 2], [1, 2], [2, 2], [3, 2], [4, 2]];
 const LINIE_DIAGONAL1 = [[0, 0], [1, 1], [2, 2], [3, 3], [4, 4]];
+const LINIE_DIAGONAL2 = [[0, 4], [1, 3], [2, 2], [3, 1], [4, 0]];
+
+// Im Schlussbild wandern der waagerechte und der senkrechte Rahmen gemeinsam
+// über den Zettel, damit nacheinander jede Reihe und jede Spalte zu sehen ist.
+// Zuletzt stehen beide wieder in der Mitte.
+const WANDER_MS = 5000;
+const WANDER_SCHRITTE = [0, 1, 2, 3, 4, 2];
 
 const SCHRITTE = [
   {
@@ -349,13 +356,21 @@ const SCHRITTE = [
   },
   {
     titel: "Diagonales Bingo",
-    text: "Von Ecke zu Ecke, quer durch den Zettel. Das zählt in beide Richtungen.",
+    text: "Von links oben nach rechts unten - quer durch den Zettel.",
     markiert: LINIE_DIAGONAL1,
-    farbe: "farbe-diagonal1",
+    farbe: "farbe-diagonal",
   },
   {
-    titel: "Alle vier Möglichkeiten",
-    text: "Egal welche dieser vier Linien zuerst voll ist - rufen Sie laut „Bingo!“",
+    titel: "Die andere Diagonale",
+    text: "Von rechts oben nach links unten zählt genauso. Die 42 in der Mitte gehört zu beiden.",
+    markiert: LINIE_DIAGONAL1,
+    farbe: "farbe-diagonal",
+    zusatz: LINIE_DIAGONAL2,
+    zusatzFarbe: "farbe-diagonal-hell",
+  },
+  {
+    titel: "Alle Möglichkeiten",
+    text: "Jede Reihe und jede Spalte zählt, dazu die beiden Diagonalen. Rot und Blau wandern gleich über den ganzen Zettel.",
     markiert: [],
     linien: true,
   },
@@ -372,6 +387,10 @@ const zettelLinien = document.getElementById("zettelLinien");
 
 let erklaerungSchritt = 0;
 const zettelZellen = [];
+let linieWaagerecht = null;
+let linieSenkrecht = null;
+let wanderIndex = 0;
+let wanderTimer = null;
 
 function baueZettel() {
   zettelGitter.innerHTML = "";
@@ -387,11 +406,40 @@ function baueZettel() {
   });
 
   zettelLinien.innerHTML = "";
+  const linien = {};
   ["waagerecht", "senkrecht", "diagonal1", "diagonal2"].forEach((art) => {
     const linie = document.createElement("div");
     linie.className = "linie linie-" + art;
     zettelLinien.appendChild(linie);
+    linien[art] = linie;
   });
+  linieWaagerecht = linien.waagerecht;
+  linieSenkrecht = linien.senkrecht;
+}
+
+function wanderPositionSetzen() {
+  const feld = WANDER_SCHRITTE[wanderIndex];
+  linieWaagerecht.style.top = feld * 20 + "%";
+  linieSenkrecht.style.left = feld * 20 + "%";
+}
+
+function wanderStoppen() {
+  clearInterval(wanderTimer);
+  wanderTimer = null;
+}
+
+function wanderStarten() {
+  wanderStoppen();
+  wanderIndex = 0;
+  wanderPositionSetzen();
+  wanderTimer = setInterval(() => {
+    if (wanderIndex >= WANDER_SCHRITTE.length - 1) {
+      wanderStoppen();
+      return;
+    }
+    wanderIndex++;
+    wanderPositionSetzen();
+  }, WANDER_MS);
 }
 
 function zeigeSchritt() {
@@ -403,9 +451,19 @@ function zeigeSchritt() {
   schritt.markiert.forEach(([z, s]) => {
     zettelZellen[z][s].classList.add("markiert", schritt.farbe);
   });
+  // Felder, die zu beiden Diagonalen gehören, tragen beide Farbklassen und
+  // werden dadurch geteilt dargestellt.
+  (schritt.zusatz || []).forEach(([z, s]) => {
+    zettelZellen[z][s].classList.add("markiert", schritt.zusatzFarbe);
+  });
 
   zettelLinien.hidden = !schritt.linien;
   erklaerungLegende.hidden = !schritt.linien;
+  if (schritt.linien) {
+    wanderStarten();
+  } else {
+    wanderStoppen();
+  }
 
   erklaerungTitel.textContent = schritt.titel;
   erklaerungText.textContent = schritt.text;
@@ -429,6 +487,7 @@ function erklaerungOeffnen() {
 }
 
 function erklaerungSchliessen() {
+  wanderStoppen();
   erklaerungOverlay.hidden = true;
 }
 
