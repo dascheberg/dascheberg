@@ -14,6 +14,7 @@
   <button id="btnManuell" class="btn btn-manuell">Manuell</button>
   <button id="btnAbbruch" class="btn btn-abbruch">Abbruch</button>
   <button id="btnDoc" class="btn btn-doc">Hilfe</button>
+  <button id="btnErklaerung" class="btn btn-erklaerung">Erklärung</button>
 </header>
 
 <main class="content">
@@ -53,6 +54,34 @@
   </aside>
 
 </main>
+
+<div class="erklaerung-overlay" id="erklaerungOverlay" hidden>
+
+  <button class="erklaerung-close" id="erklaerungClose" aria-label="Erklärung schließen">×</button>
+
+  <h2 class="erklaerung-titel" id="erklaerungTitel"></h2>
+  <p class="erklaerung-text" id="erklaerungText"></p>
+
+  <div class="zettel">
+    <div class="zettel-kopf">
+      <span>B</span><span>I</span><span>N</span><span>G</span><span>O</span>
+    </div>
+    <div class="zettel-feld">
+      <div class="zettel-gitter" id="zettelGitter"></div>
+      <div class="zettel-linien" id="zettelLinien" hidden></div>
+    </div>
+    <div class="zettel-nummer">Zettel Nr. 74</div>
+  </div>
+
+  <div class="erklaerung-legende" id="erklaerungLegende" hidden>
+    <span class="legende-eintrag"><span class="legende-punkt farbe-waagerecht"></span>waagerecht</span>
+    <span class="legende-eintrag"><span class="legende-punkt farbe-senkrecht"></span>senkrecht</span>
+    <span class="legende-eintrag"><span class="legende-punkt farbe-diagonal1"></span><span class="legende-punkt farbe-diagonal2"></span>diagonal</span>
+  </div>
+
+  <p class="erklaerung-weiter" id="erklaerungWeiter"></p>
+
+</div>
 
 <script src="script.js"></script>
 </body>

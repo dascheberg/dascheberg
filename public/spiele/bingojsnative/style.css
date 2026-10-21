@@ -12,6 +12,11 @@
   --color-N: #0060a8;
   --color-G: #1a7a3e;
   --color-O: #7b1fa2;
+
+  --linie-waagerecht: #c0392b;
+  --linie-senkrecht: #0060a8;
+  --linie-diagonal1: #1a7a3e;
+  --linie-diagonal2: #7b1fa2;
 }
 
 * { box-sizing: border-box; }
@@ -34,6 +39,7 @@ body {
 
 .controls {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 24px;
   padding: 16px;
@@ -75,6 +81,12 @@ body {
 .btn-abbruch { background: #c0392b; }
 .btn-doc     { background: var(--color-N); }
 .btn-doc    { background: #7b1fa2; }
+
+.btn-erklaerung {
+  background: var(--gold);
+  font-size: 1.1rem;
+  padding: 10px 22px;
+}
 
 /* ---------- Hauptbereich ---------- */
 
@@ -243,4 +255,223 @@ body {
   .draw-display .letter { font-size: 20vw; }
   .draw-display .number { font-size: 34vw; }
   .btn { font-size: 1.1rem; padding: 12px 20px; }
+}
+
+/* ---------- Erklärung (Overlay über dem Spiel) ---------- */
+
+.erklaerung-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.2vh;
+  padding: 2.5vh 16px;
+  cursor: pointer;
+  overflow-y: auto;
+}
+
+.erklaerung-overlay[hidden] { display: none; }
+
+.erklaerung-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background: #8a8a9a;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.erklaerung-titel {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1.6rem, 5vh, 3.2rem);
+  font-weight: 900;
+  color: var(--gold);
+}
+
+.erklaerung-text {
+  margin: 0;
+  max-width: 900px;
+  text-align: center;
+  font-size: clamp(1rem, 2.6vh, 1.6rem);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.erklaerung-weiter {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(0.9rem, 2.2vh, 1.3rem);
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* ---------- Der Bingozettel ---------- */
+
+.zettel {
+  flex: 0 0 auto;
+  width: min(54vh, 92vw);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+.zettel-kopf {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background: linear-gradient(180deg, #4a74b4 0%, #163866 100%);
+  border: 2px solid #1a1a2e;
+}
+
+.zettel-kopf span {
+  padding: 0.12em 0;
+  text-align: center;
+  color: #ffffff;
+  font-size: clamp(1.4rem, 5vh, 3rem);
+  font-weight: 900;
+}
+
+.zettel-feld {
+  position: relative;
+}
+
+.zettel-gitter {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 2px solid #1a1a2e;
+  border-top: none;
+  background: #ffffff;
+}
+
+.zettel-zelle {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid #1a1a2e;
+  border-bottom: 2px solid #1a1a2e;
+  font-size: clamp(1.1rem, 4.4vh, 2.6rem);
+  font-weight: 900;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.zettel-zelle:nth-child(5n)   { border-right: none; }
+.zettel-zelle:nth-child(n+21) { border-bottom: none; }
+
+.zettel-zelle.markiert { color: #ffffff; }
+.zettel-zelle.markiert.farbe-waagerecht { background: var(--linie-waagerecht); }
+.zettel-zelle.markiert.farbe-senkrecht  { background: var(--linie-senkrecht); }
+.zettel-zelle.markiert.farbe-diagonal1  { background: var(--linie-diagonal1); }
+.zettel-zelle.markiert.farbe-diagonal2  { background: var(--linie-diagonal2); }
+
+.zettel-nummer {
+  padding-top: 4px;
+  text-align: right;
+  font-size: clamp(0.7rem, 1.6vh, 1rem);
+  color: var(--muted);
+}
+
+/* ---------- Schritt 5: vier Linien als Rahmen über dem Zettel ---------- */
+
+.zettel-linien {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.zettel-linien[hidden] { display: none; }
+
+.linie {
+  position: absolute;
+  border: 6px solid;
+  border-radius: 999px;
+}
+
+.linie-waagerecht {
+  border-color: var(--linie-waagerecht);
+  left: -1%;
+  width: 102%;
+  top: 40%;
+  height: 20%;
+}
+
+.linie-senkrecht {
+  border-color: var(--linie-senkrecht);
+  top: -1%;
+  height: 102%;
+  left: 40%;
+  width: 20%;
+}
+
+/* Die Diagonalen sind um 45° gedrehte Rahmen. Länge und Dicke zusammen
+   müssen unter 141% bleiben (der Diagonale des Zettels), sonst stehen die
+   Ecken des gedrehten Rahmens über den Zettelrand hinaus. */
+.linie-diagonal1,
+.linie-diagonal2 {
+  left: 50%;
+  top: 50%;
+  width: 126%;
+  height: 18%;
+}
+
+.linie-diagonal1 {
+  border-color: var(--linie-diagonal1);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.linie-diagonal2 {
+  border-color: var(--linie-diagonal2);
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* ---------- Legende ---------- */
+
+.erklaerung-legende {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 22px;
+  max-width: 100%;
+  font-size: clamp(0.9rem, 2.2vh, 1.3rem);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.erklaerung-legende[hidden] { display: none; }
+
+.legende-eintrag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legende-punkt {
+  width: 1.1em;
+  height: 1.1em;
+  border-radius: 4px;
+}
+
+.legende-punkt.farbe-waagerecht { background: var(--linie-waagerecht); }
+.legende-punkt.farbe-senkrecht  { background: var(--linie-senkrecht); }
+.legende-punkt.farbe-diagonal1  { background: var(--linie-diagonal1); }
+.legende-punkt.farbe-diagonal2  { background: var(--linie-diagonal2); }
+
+@media (max-width: 900px) {
+  .btn-erklaerung { font-size: 0.95rem; padding: 10px 14px; }
+}
+
+@media (max-width: 900px) {
+  /* Schließen-Knopf nicht über die Überschrift legen */
+  .erklaerung-overlay { padding-top: 64px; justify-content: flex-start; }
+  .erklaerung-close { width: 44px; height: 44px; font-size: 1.5rem; top: 10px; right: 10px; }
 }

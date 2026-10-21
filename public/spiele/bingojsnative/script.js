@@ -268,6 +268,19 @@ btnAbbruch.addEventListener("click", abbruch);
 document.getElementById("btnDoc").addEventListener("click", () => window.open("hilfe.html", "_blank"));
 
 document.addEventListener("keydown", (e) => {
+  // Solange die Erklärung offen ist, gehören die Tasten ihr - sonst würde
+  // die Leertaste beim Erklären schon eine Zahl ziehen.
+  if (erklaerungIstOffen()) {
+    if (e.code === "Space" || e.key === "Enter" || e.key === "ArrowRight") {
+      e.preventDefault();
+      erklaerungWeiter();
+    } else if (e.key === "Escape") {
+      e.preventDefault();
+      erklaerungSchliessen();
+    }
+    return;
+  }
+
   if (manualMode && gameRunning) {
     if (e.key >= "0" && e.key <= "9") {
       e.preventDefault();
@@ -299,3 +312,142 @@ document.addEventListener("keydown", (e) => {
 buildBoard();
 resetDisplay();
 updateButtons();
+
+// ---------- Erklärung für die Gruppe ----------
+
+// Die Zahlen von Zettel Nr. 74 - genau der Zettel, den die Spieler in der Hand haben.
+const ZETTEL = [
+  [11, 28, 34, 55, 73],
+  [3, 30, 35, 48, 75],
+  [13, 17, 42, 49, 72],
+  [1, 18, 38, 51, 65],
+  [5, 22, 39, 59, 61],
+];
+
+// Felder jeweils als [Zeile, Spalte]
+const LINIE_WAAGERECHT = [[2, 0], [2, 1], [2, 2], [2, 3], [2, 4]];
+const LINIE_SENKRECHT = [[0, 2], [1, 2], [2, 2], [3, 2], [4, 2]];
+const LINIE_DIAGONAL1 = [[0, 0], [1, 1], [2, 2], [3, 3], [4, 4]];
+
+const SCHRITTE = [
+  {
+    titel: "So sieht Ihr Zettel aus",
+    text: "25 Zahlen in fünf Spalten: B, I, N, G und O. Jede gezogene Zahl, die Sie finden, streichen Sie ab.",
+    markiert: [],
+  },
+  {
+    titel: "Waagerechtes Bingo",
+    text: "Eine ganze Reihe quer - von links nach rechts. Alle fünf Zahlen abgestrichen: Bingo!",
+    markiert: LINIE_WAAGERECHT,
+    farbe: "farbe-waagerecht",
+  },
+  {
+    titel: "Senkrechtes Bingo",
+    text: "Eine ganze Spalte - von oben nach unten. Auch das ist ein Bingo.",
+    markiert: LINIE_SENKRECHT,
+    farbe: "farbe-senkrecht",
+  },
+  {
+    titel: "Diagonales Bingo",
+    text: "Von Ecke zu Ecke, quer durch den Zettel. Das zählt in beide Richtungen.",
+    markiert: LINIE_DIAGONAL1,
+    farbe: "farbe-diagonal1",
+  },
+  {
+    titel: "Alle vier Möglichkeiten",
+    text: "Egal welche dieser vier Linien zuerst voll ist - rufen Sie laut „Bingo!“",
+    markiert: [],
+    linien: true,
+  },
+];
+
+const erklaerungOverlay = document.getElementById("erklaerungOverlay");
+const erklaerungClose = document.getElementById("erklaerungClose");
+const erklaerungTitel = document.getElementById("erklaerungTitel");
+const erklaerungText = document.getElementById("erklaerungText");
+const erklaerungLegende = document.getElementById("erklaerungLegende");
+const erklaerungWeiterEl = document.getElementById("erklaerungWeiter");
+const zettelGitter = document.getElementById("zettelGitter");
+const zettelLinien = document.getElementById("zettelLinien");
+
+let erklaerungSchritt = 0;
+const zettelZellen = [];
+
+function baueZettel() {
+  zettelGitter.innerHTML = "";
+  ZETTEL.forEach((zeile, z) => {
+    zettelZellen[z] = [];
+    zeile.forEach((zahl, s) => {
+      const zelle = document.createElement("div");
+      zelle.className = "zettel-zelle";
+      zelle.textContent = zahl;
+      zettelGitter.appendChild(zelle);
+      zettelZellen[z][s] = zelle;
+    });
+  });
+
+  zettelLinien.innerHTML = "";
+  ["waagerecht", "senkrecht", "diagonal1", "diagonal2"].forEach((art) => {
+    const linie = document.createElement("div");
+    linie.className = "linie linie-" + art;
+    zettelLinien.appendChild(linie);
+  });
+}
+
+function zeigeSchritt() {
+  const schritt = SCHRITTE[erklaerungSchritt];
+
+  zettelZellen.forEach((zeile) =>
+    zeile.forEach((zelle) => (zelle.className = "zettel-zelle"))
+  );
+  schritt.markiert.forEach(([z, s]) => {
+    zettelZellen[z][s].classList.add("markiert", schritt.farbe);
+  });
+
+  zettelLinien.hidden = !schritt.linien;
+  erklaerungLegende.hidden = !schritt.linien;
+
+  erklaerungTitel.textContent = schritt.titel;
+  erklaerungText.textContent = schritt.text;
+
+  const istLetzter = erklaerungSchritt === SCHRITTE.length - 1;
+  erklaerungWeiterEl.textContent =
+    "Schritt " + (erklaerungSchritt + 1) + " von " + SCHRITTE.length +
+    (istLetzter
+      ? " · Klicken oder Leertaste: zurück zum Spiel"
+      : " · Klicken oder Leertaste für weiter");
+}
+
+function erklaerungIstOffen() {
+  return !erklaerungOverlay.hidden;
+}
+
+function erklaerungOeffnen() {
+  erklaerungSchritt = 0;
+  zeigeSchritt();
+  erklaerungOverlay.hidden = false;
+}
+
+function erklaerungSchliessen() {
+  erklaerungOverlay.hidden = true;
+}
+
+function erklaerungWeiter() {
+  erklaerungSchritt++;
+  if (erklaerungSchritt >= SCHRITTE.length) {
+    erklaerungSchliessen();
+    return;
+  }
+  zeigeSchritt();
+}
+
+document.getElementById("btnErklaerung").addEventListener("click", erklaerungOeffnen);
+
+erklaerungClose.addEventListener("click", (e) => {
+  e.stopPropagation();
+  erklaerungSchliessen();
+});
+
+erklaerungOverlay.addEventListener("click", erklaerungWeiter);
+
+baueZettel();
